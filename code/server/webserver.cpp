@@ -21,7 +21,7 @@ WebServer::WebServer(
     strncat(srcDir_, "/resources/", 16);
     HttpConn::userCount = 0;
     HttpConn::srcDir = srcDir_;
-    SqlConnPool::Instance()->Init("localhost", sqlPort, sqlUser, sqlPwd, dbName, connPoolNum);
+    SqlConnPool::Instance()->Init("127.0.0.1", sqlPort, sqlUser, sqlPwd, dbName, connPoolNum);
 
     InitEventMode_(trigMode);
     if(!InitSocket_()) { isClose_ = true;}

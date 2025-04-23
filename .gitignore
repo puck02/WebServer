@@ -4,8 +4,8 @@
 !*.cpp
 !*.h
 !LICENSE
-!makefile
-!Makefile
+# !makefile
+# !Makefile
 
 *.o
 *.1

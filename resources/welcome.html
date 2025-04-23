@@ -91,6 +91,19 @@
           }
           /* 移除图片区域（若有） */
           .home-image { display: none; }
+          /* 新增：去除 pre 默认背景及边框，并添加动画 */
+          #asciiArt {
+               background: transparent;
+               border: none;
+               padding: 0;
+               margin: 20px auto 0;
+               animation: waving 2s infinite ease-in-out;
+          }
+          @keyframes waving {
+               0% { transform: translateY(0); }
+               50% { transform: translateY(-5px); }
+               100% { transform: translateY(0); }
+          }
      </style>
 </head>
 
@@ -133,6 +146,42 @@
                          <h1 class="wow fadeInUp" data-wow-delay="0.6s">Welcome!</h1>
                     </div>
                </div>
+               <div class="row">
+                    <div class="col-md-12" style="text-align: center; margin-top: 20px;">
+                         <pre id="asciiArt" style="display: none; font-family: monospace; font-size: 6px; line-height: 1; white-space: pre;">                                                                                                     
+                              ....                       *@@#***#%@=    .+@@@%.                        
+                           +@=    :*@@=                +@#*********%@@%-      %*                       
+                          @-           #@.      ..::::@%+***********%%         @-                      
+                         +%                #@@=.     @#**************@.        :@                      
+                         @                          #@********%@@@**+@=         .                      
+                         @                          @#*******%#**#@@@##%#=.:%@@@@@@=                   
+                         @.                         @********%%**%@******+%@*******#@=                 
+                         +*                         @#+********#%@+********%#+*******@=                
+                         .@@*                        @#**********@********+%@@@#*****#@                
+                         *@                           #@%#***#%@:#@******+%@++#@+****#@                
+                        @=                               .--:.    .#@@%%@@#%@@@%*****@+                
+                       @=                                               ************@#                 
+                      %*                                               .@********+#@=                  
+                     .@                                                 .@%#*+*#@@-.                   
+                     @:                                                    :=-.    -@                  
+                    .@                                                              @:                 
+                    -@                                                              @+                 
+                    -@                                                          @@@@@@@@@@#-           
+                  .-*@=-.           @@@                             #@@             #+                 
+              #@=.   @             %@@@@                           %@@@@            @-                 
+                     #=            %@@@@                           #@@@@         -:-@.                 
+                      @.:==        .@@@-          .@..:@            @@@=           @-=%@%              
+                   :@@#@                          .@=.*%                          ##                   
+                                                                             +#. @+                    
+                         #@*@@-                                                .@@@#                   
+                       =@%.@@                                                 @-    =@=                
+                     @@.     -@@-                                                                      
+                                 :@@@#:                             +@@@=                              
+                                        .-*@@@@@@@@@@@@@@@@@@@@%+:                                     
+                                                                                                                                                                                             
+</pre>
+                    </div>
+               </div>
           </div>
      </section>
 
@@ -144,6 +193,14 @@
      <script src="js/magnific-popup-options.js"></script>
      <script src="js/wow.min.js"></script>
      <script src="js/custom.js"></script>
+     <script>
+          $(document).ready(function(){
+               // 稍作延时，等待欢迎文字动画完成
+               setTimeout(function(){
+                    $("#asciiArt").fadeIn("slow");
+               }, 1500);
+          });
+     </script>
 </body>
 
 </html>
