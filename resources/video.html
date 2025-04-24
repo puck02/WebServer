@@ -19,6 +19,8 @@
               font-family: 'Roboto', sans-serif;
               background-color: #f5fbf9;
               color: #333;
+              margin-top: 0;
+              padding-top: 80px; /* 增加内边距，避免固定导航栏遮挡内容 */
          }
          
          /* 预加载效果 */
@@ -65,17 +67,6 @@
               color: #28a745; /* 悬停时绿色高亮 */
          }
          
-         /* HOME SECTION 样式 */
-         #home {
-              padding-top: 80px;
-              padding-bottom: 40px;
-         }
-         
-         #home h1 {
-              font-size: 36px;
-              margin-bottom: 20px;
-         }
-         
          /* 视频播放器样式 */
          .video-container {
               text-align: center;
@@ -92,6 +83,12 @@
          
          .video-container video:hover {
               transform: scale(1.02);
+         }
+         
+         /* 移除 HOME SECTION 内的头像和标题，避免顶部多余留白 */
+         #home {
+              padding-top: 0;
+              padding-bottom: 40px;
          }
      </style>
 </head>
@@ -127,18 +124,9 @@
           </div>
      </div>
      
-     <!-- HOME SECTION -->
+     <!-- HOME SECTION（移除头像和标题，只保留视频播放器） -->
      <section id="home">
           <div class="container">
-               <div class="row">
-                    <div class="col-md-offset-1 col-md-2 col-sm-3">
-                         <img src="images/profile-image.jpg" class="wow fadeInUp img-responsive img-circle"
-                              data-wow-delay="0.2s" alt="about image">
-                    </div>
-                    <div class="col-md-8 col-sm-8">
-                         <h1 class="wow fadeInUp" data-wow-delay="0.6s">视频测试</h1>
-                    </div>
-               </div>
                <div class="row">
                     <div class="video-container">
                          <video width="906" height="506" controls>
