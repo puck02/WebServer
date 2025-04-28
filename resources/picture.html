@@ -115,6 +115,12 @@
                     <li><a class="smoothScroll" href="/video">视频</a></li>
                     <li><a class="smoothScroll" href="/login">登录</a></li>
                     <li><a class="smoothScroll" href="/register">注册</a></li>
+                    <li>
+                        <a href="#" id="uploadImageBtn">上传</a>
+                        <form id="uploadImageForm" style="display:none;" enctype="multipart/form-data">
+                            <input type="file" name="image" accept=".jpg,.jpeg" style="display:none;" id="imageInput">
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -156,6 +162,26 @@
         $(window).on('load', function () {
             $('.preloader').fadeOut('slow');
         });
+
+        // 上传图片
+        document.getElementById('uploadImageBtn').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('imageInput').click();
+        };
+        document.getElementById('imageInput').onchange = function() {
+            var formData = new FormData(document.getElementById('uploadImageForm'));
+            fetch('/upload_image', {
+                method: 'POST',
+                body: formData,
+                credentials: 'include'
+            }).then(res => res.json()).then(data => {
+                if(data.success) {
+                    location.reload();
+                } else {
+                    alert(data.msg || "上传失败");
+                }
+            });
+        };
     </script>
 
 </body>

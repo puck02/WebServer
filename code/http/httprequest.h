@@ -52,6 +52,8 @@ public:
     std::string GetPost(const char* key) const;
 
     bool IsKeepAlive() const;
+    bool IsUserLoggedIn() const;
+    bool SaveUploadFile(const std::string& field, const std::string& dir, const std::vector<std::string>& exts);
 
     /* 
     todo 

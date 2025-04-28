@@ -119,6 +119,12 @@
                          <li><a class="smoothScroll" href="/video">视频</a></li>
                          <li><a class="smoothScroll" href="/login">登录</a></li>
                          <li><a class="smoothScroll" href="/register">注册</a></li>
+                         <li>
+                             <a href="#" id="uploadVideoBtn">上传</a>
+                             <form id="uploadVideoForm" style="display:none;" enctype="multipart/form-data">
+                                 <input type="file" name="video" accept=".mp4" style="display:none;" id="videoInput">
+                             </form>
+                         </li>
                     </ul>
                </div>
           </div>
@@ -150,6 +156,26 @@
          $(window).on('load', function () {
               $('.preloader').fadeOut('slow');
          });
+
+         // 上传视频
+         document.getElementById('uploadVideoBtn').onclick = function(e) {
+              e.preventDefault();
+              document.getElementById('videoInput').click();
+         };
+         document.getElementById('videoInput').onchange = function() {
+              var formData = new FormData(document.getElementById('uploadVideoForm'));
+              fetch('/upload_video', {
+                   method: 'POST',
+                   body: formData,
+                   credentials: 'include'
+              }).then(res => res.json()).then(data => {
+                   if(data.success) {
+                        location.reload();
+                   } else {
+                        alert(data.msg || "上传失败");
+                   }
+              });
+         };
      </script>
 </body>
 
